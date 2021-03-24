@@ -33,7 +33,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>LeaderElection</mainClass>
+                            <mainClass>clusterCoordination.LeaderElection</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

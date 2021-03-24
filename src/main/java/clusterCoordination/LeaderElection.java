@@ -1,11 +1,7 @@
 package clusterCoordination;
 
-import org.apache.zookeeper.CreateMode;
-import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.WatchedEvent;
-import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooDefs;
-import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.*;
+import org.apache.zookeeper.data.Stat;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -23,7 +19,7 @@ public class LeaderElection implements Watcher {
         LeaderElection leaderElection = new LeaderElection();
         leaderElection.connectToZookeeper();
         leaderElection.volunteerForLeadership();
-        leaderElection.electLeader();
+        leaderElection.reelectLeader();
         leaderElection.run();
         leaderElection.close();
 
@@ -32,25 +28,35 @@ public class LeaderElection implements Watcher {
 
     public void volunteerForLeadership() throws KeeperException, InterruptedException {
         String znodePrefix = ELECTION_NAMESPACE + "/c_";
-        String znodeFullPath = zookeeper.create(znodePrefix, new byte[]{}, ZooDefs.Ids.OPEN_ACL_UNSAFE,
-                                                CreateMode.EPHEMERAL_SEQUENTIAL);
+        String znodeFullPath = zookeeper.create(znodePrefix, new byte[]{}, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
 
-        System.out.println("znode name " + znodeFullPath);
         this.currentZnodeName = znodeFullPath.replace(ELECTION_NAMESPACE + "/", "");
+        System.out.println("znode name " + this.currentZnodeName);
     }
 
-    public void electLeader() throws KeeperException, InterruptedException {
-        List<String> children = zookeeper.getChildren(ELECTION_NAMESPACE, false);
-        Collections.sort(children);
+    public void reelectLeader() throws KeeperException, InterruptedException {
+        Stat predecessorStat = null;
+        String predecessorZnodeName = "";
 
-        String smallestChild = children.get(0);
+        while(predecessorStat == null) {
+            List<String> children = zookeeper.getChildren(ELECTION_NAMESPACE, false);
+            Collections.sort(children);
+            String smallestChild = children.get(0);
 
-        if (smallestChild.equals(currentZnodeName)) {
-            System.out.println("I am the leader");
-            return;
+            if (smallestChild.equals(currentZnodeName)) {
+                System.out.println("I am the leader");
+                return;
+            } else {
+                System.out.println("I am not the leader");
+
+                int predecessorIndex = Collections.binarySearch(children, currentZnodeName) - 1;
+                predecessorZnodeName = children.get(predecessorIndex);
+                predecessorStat = zookeeper.exists(ELECTION_NAMESPACE + "/" + predecessorZnodeName, this);
+            }
         }
 
-        System.out.println("I am not the leader, " + smallestChild + " is the leader");
+        System.out.println("Watching znode " + predecessorZnodeName);
+        System.out.println();
     }
 
     public void connectToZookeeper() throws IOException {
@@ -79,6 +85,14 @@ public class LeaderElection implements Watcher {
                         zookeeper.notifyAll();
                     }
                 }
+                break;
+            case NodeDeleted:
+                try {
+                    reelectLeader();
+                } catch (KeeperException | InterruptedException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
 
