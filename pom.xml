@@ -33,7 +33,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>clusterCoordination.LeaderElection</mainClass>
+                            <mainClass>clusterCoordination.serviceRegistryDiscovery.Application</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
