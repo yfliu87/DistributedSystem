@@ -1,4 +1,4 @@
-package clusterCoordination.autoHealer;
+package autoHeal.autoHealer;
 
 import org.apache.zookeeper.KeeperException;
 

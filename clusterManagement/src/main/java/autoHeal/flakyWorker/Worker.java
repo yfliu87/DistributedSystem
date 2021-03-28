@@ -1,4 +1,4 @@
-package clusterCoordination.flakyWorker;
+package autoHeal.flakyWorker;
 
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;

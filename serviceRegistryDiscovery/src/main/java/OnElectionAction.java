@@ -1,5 +1,3 @@
-package clusterCoordination.serviceRegistryDiscovery;
-
 import org.apache.zookeeper.KeeperException;
 
 import java.net.InetAddress;

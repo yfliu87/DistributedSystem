@@ -1,5 +1,3 @@
-package clusterCoordination.serviceRegistryDiscovery;
-
 public interface OnElectionCallback {
 
     void onElectedToBeLeader();
