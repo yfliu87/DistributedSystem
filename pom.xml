@@ -13,6 +13,7 @@
         <module>networkCommunication</module>
         <module>serviceRegistryDiscovery</module>
         <module>clusterManagement</module>
+        <module>documentSearch</module>
     </modules>
 
 </project>
