@@ -1,6 +1,6 @@
-package search;
+package sequentialSearch.search;
 
-import model.DocumentData;
+import sequentialSearch.model.DocumentData;
 
 import java.util.*;
 import java.util.stream.Collectors;

@@ -1,5 +1,7 @@
-import model.DocumentData;
-import search.TFIDF;
+package sequentialSearch;
+
+import sequentialSearch.model.DocumentData;
+import sequentialSearch.search.TFIDF;
 
 import java.io.BufferedReader;
 import java.io.File;
