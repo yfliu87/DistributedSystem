@@ -1,7 +1,7 @@
 package distributedSearch.clusterManagement;
 
 import distributedSearch.network.backend.WebClient;
-import distributedSearch.network.WebServer;
+import distributedSearch.network.backend.WebServer;
 import distributedSearch.search.backend.SearchCoordinator;
 import distributedSearch.search.backend.SearchWorker;
 import org.apache.zookeeper.KeeperException;

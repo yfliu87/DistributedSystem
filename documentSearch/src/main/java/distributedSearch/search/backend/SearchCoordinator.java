@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static distributedSearch.Params.RESOURCES_DIRECTORY;
-import static distributedSearch.Params.SEARCH_ENDPOINT;
+import static distributedSearch.utils.Params.RESOURCES_DIRECTORY;
+import static distributedSearch.utils.Params.SEARCH_ENDPOINT;
 
 public class SearchCoordinator implements OnRequestCallback {
 

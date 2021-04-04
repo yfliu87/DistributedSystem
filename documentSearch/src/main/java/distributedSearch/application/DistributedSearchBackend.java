@@ -10,10 +10,10 @@ import org.apache.zookeeper.ZooKeeper;
 
 import java.io.IOException;
 
-import static distributedSearch.Params.WORKERS_REGISTRY_ZNODE;
-import static distributedSearch.Params.COORDINATORS_REGISTRY_ZNODE;
-import static distributedSearch.Params.ZOOKEEPER_ADDRESS;
-import static distributedSearch.Params.SESSION_TIMEOUT;
+import static distributedSearch.utils.Params.WORKERS_REGISTRY_ZNODE;
+import static distributedSearch.utils.Params.COORDINATORS_REGISTRY_ZNODE;
+import static distributedSearch.utils.Params.ZOOKEEPER_ADDRESS;
+import static distributedSearch.utils.Params.SESSION_TIMEOUT;
 
 public class DistributedSearchBackend implements Watcher {
 

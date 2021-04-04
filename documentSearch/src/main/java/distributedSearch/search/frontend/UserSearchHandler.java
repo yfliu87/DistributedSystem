@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static distributedSearch.Params.DOCUMENT_SEARCH_ENDPOINT;
+import static distributedSearch.utils.Params.DOCUMENT_SEARCH_ENDPOINT;
 
 public class UserSearchHandler implements OnRequestCallback {
     private final WebClient client;

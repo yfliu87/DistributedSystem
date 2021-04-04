@@ -6,7 +6,7 @@ import org.apache.zookeeper.data.Stat;
 import java.util.Collections;
 import java.util.List;
 
-import static distributedSearch.Params.ELECTION_NAMESPACE;
+import static distributedSearch.utils.Params.ELECTION_NAMESPACE;
 
 public class LeaderElection implements Watcher {
 

@@ -1,4 +1,4 @@
-package distributedSearch;
+package distributedSearch.utils;
 
 public class Params {
     public static final String ZOOKEEPER_ADDRESS = "localhost:2181";
@@ -11,4 +11,6 @@ public class Params {
     public static final String SEARCH_ENDPOINT = "/search";
     public static final String DOCUMENT_SEARCH_ENDPOINT = "/documents_search";
     public static final String RESOURCES_DIRECTORY = "/Users/yifeiliu/Documents/DistributedSystem/DistributedSystem/documentSearch/src/main/resources/books";
+    public static final String HOME_PAGE_ENDPOINT = "/";
+    public static final String HOME_PAGE_UI_ASSETS_BASE_DIR = "/ui_assets/";
 }

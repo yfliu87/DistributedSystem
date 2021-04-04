@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static distributedSearch.Params.TASK_ENDPOINT;
+import static distributedSearch.utils.Params.TASK_ENDPOINT;
 
 public class SearchWorker implements OnRequestCallback {
 

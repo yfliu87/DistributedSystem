@@ -1,15 +1,16 @@
-package distributedSearch.network;
+package distributedSearch.network.backend;
 
 import com.sun.net.httpserver.HttpContext;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
+import distributedSearch.network.OnRequestCallback;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
 
-import static distributedSearch.Params.STATUS_ENDPOINT;
+import static distributedSearch.utils.Params.STATUS_ENDPOINT;
 
 public class WebServer {
 
